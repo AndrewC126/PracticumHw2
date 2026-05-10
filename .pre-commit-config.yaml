@@ -22,3 +22,10 @@ repos:
         language: system
         pass_filenames: false
         always_run: true
+
+      - id: check-gpl-licenses
+        name: check for GPL licenses
+        entry: liccheck -r requirements.txt
+        language: system
+        pass_filenames: false
+        always_run: true

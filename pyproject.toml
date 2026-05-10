@@ -11,3 +11,44 @@ select = ["E", "F", "I"]
 [tool.mypy]
 python_version = "3.11"
 ignore_missing_imports = true
+
+[tool.liccheck]
+authorized_licenses = [
+    # Full names
+    "bsd",
+    "new bsd",
+    "bsd license",
+    "simplified bsd",
+    "apache",
+    "apache 2.0",
+    "apache software",
+    "apache software license",
+    "apache license 2.0",
+    "isc",
+    "isc license (iscl)",
+    "mit",
+    "mit license",
+    "mozilla public license 2.0 (mpl 2.0)",
+    "python software foundation license",
+    "python software foundation",
+    "psfl",
+    "lgpl",
+    "gnu lesser general public license",
+    "gnu library or lesser general public license (lgpl)",
+    "historical permission notice and disclaimer (hpnd)",
+    "public domain",
+    "unlicense",
+    "artistic license",
+    "zpl 2.1",
+    # SPDX identifiers (used by newer packages)
+    "bsd-2-clause",
+    "bsd-3-clause",
+    "apache-2.0",
+    "mit-cmu",
+    "3-clause bsd",
+    "mpl-2.0",
+]
+unauthorized_licenses = [
+    "gnu general public license",
+    "gnu affero general public license",
+]
