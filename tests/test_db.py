@@ -12,7 +12,6 @@ import pandas as pd
 
 import app.db as db
 
-
 # Column contracts derived from the user story and acceptance criteria
 SUMMARY_REQUIRED_COLUMNS = {
     "Defect Code",
@@ -95,16 +94,12 @@ class TestFetchSummaryAC5:
         assert SUMMARY_REQUIRED_COLUMNS.issubset(set(result.columns))
 
     def test_recurring_is_a_valid_status(self):
-        with patch.object(
-            db, "_query", return_value=pd.DataFrame([_summary_row("Recurring")])
-        ):
+        with patch.object(db, "_query", return_value=pd.DataFrame([_summary_row("Recurring")])):
             result = db.fetch_summary(_START, _END)
         assert result["Status"].iloc[0] in VALID_STATUSES
 
     def test_one_off_is_a_valid_status(self):
-        with patch.object(
-            db, "_query", return_value=pd.DataFrame([_summary_row("One-Off")])
-        ):
+        with patch.object(db, "_query", return_value=pd.DataFrame([_summary_row("One-Off")])):
             result = db.fetch_summary(_START, _END)
         assert result["Status"].iloc[0] in VALID_STATUSES
 

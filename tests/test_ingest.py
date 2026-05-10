@@ -9,7 +9,6 @@ from app.ingest import (
     validate_required_columns,
 )
 
-
 # ---------------------------------------------------------------------------
 # AC3 — Zero-defect records are excluded from all counts and sums
 # ---------------------------------------------------------------------------

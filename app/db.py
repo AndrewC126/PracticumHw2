@@ -17,7 +17,6 @@ import psycopg2
 import psycopg2.extras
 import streamlit as st
 
-
 # ── Connection ────────────────────────────────────────────────────────────────
 
 
@@ -47,9 +46,7 @@ def _query(sql: str, params=None) -> pd.DataFrame:
 
 @st.cache_data(ttl=300)
 def get_date_bounds() -> tuple:
-    df = _query(
-        "SELECT MIN(production_date) AS min_d, MAX(production_date) AS max_d FROM lots"
-    )
+    df = _query("SELECT MIN(production_date) AS min_d, MAX(production_date) AS max_d FROM lots")
     return df["min_d"].iloc[0], df["max_d"].iloc[0]
 
 
@@ -137,9 +134,7 @@ ORDER BY dr.reporting_year, dr.reporting_week
 
 
 @st.cache_data(ttl=300)
-def fetch_weekly_breakdown(
-    defect_code: str, start_date: date, end_date: date
-) -> pd.DataFrame:
+def fetch_weekly_breakdown(defect_code: str, start_date: date, end_date: date) -> pd.DataFrame:
     df = _query(_WEEKLY_SQL, (defect_code, start_date, end_date))
     if df.empty:
         return df

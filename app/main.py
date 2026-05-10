@@ -112,9 +112,7 @@ if df_raw.empty:
 # AC6 — apply status filter
 df_filtered = df_raw.copy()
 if status_filter == "Recurring Only":
-    df_filtered = df_filtered[df_filtered["Status"] == "Recurring"].reset_index(
-        drop=True
-    )
+    df_filtered = df_filtered[df_filtered["Status"] == "Recurring"].reset_index(drop=True)
     if df_filtered.empty:
         st.info("No recurring defects found in the selected date range.")
         st.stop()
