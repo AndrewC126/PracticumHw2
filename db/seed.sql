@@ -8,13 +8,13 @@ TRUNCATE defect_records, lots, defect_types RESTART IDENTITY CASCADE;
 -- defect_types
 -- -----------------------------------------------------------------
 INSERT INTO defect_types (defect_code, classification, status) VALUES
-    ('BURR', 'RECURRING', 'Active')  -- Excess burr,
-    ('COAT', 'RECURRING', 'Active')  -- Coating defect,
-    ('CRACK', 'RECURRING', 'Active')  -- Surface crack,
-    ('DIM', 'RECURRING', 'Active')  -- Out of tolerance dimension,
-    ('POR', 'RECURRING', 'Active')  -- Porosity,
-    ('SCR', 'RECURRING', 'Active')  -- Scratch / cosmetic,
-    ('WELD', 'RECURRING', 'Active')  -- Weld bead issue;
+    ('BURR', 'RECURRING', 'Active'),  -- Excess burr
+    ('COAT', 'RECURRING', 'Active'),  -- Coating defect
+    ('CRACK', 'RECURRING', 'Active'),  -- Surface crack
+    ('DIM', 'RECURRING', 'Active'),  -- Out of tolerance dimension
+    ('POR', 'RECURRING', 'Active'),  -- Porosity
+    ('SCR', 'RECURRING', 'Active'),  -- Scratch / cosmetic
+    ('WELD', 'RECURRING', 'Active');  -- Weld bead issue
 
 -- -----------------------------------------------------------------
 -- lots

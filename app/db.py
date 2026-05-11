@@ -11,16 +11,30 @@ Connection is configured via environment variables:
 
 import os
 from datetime import date
+from urllib.parse import urlparse
 
 import pandas as pd
 import psycopg2
 import psycopg2.extras
 import streamlit as st
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ── Connection ────────────────────────────────────────────────────────────────
 
 
 def _conn_params() -> dict:
+    url = os.getenv("DATABASE_URL")
+    if url:
+        u = urlparse(url)
+        return dict(
+            host=u.hostname,
+            port=u.port or 5432,
+            dbname=(u.path or "/defect_db").lstrip("/"),
+            user=u.username,
+            password=u.password or "",
+        )
     return dict(
         host=os.getenv("DB_HOST", "localhost"),
         port=int(os.getenv("DB_PORT", "5432")),

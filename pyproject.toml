@@ -1,3 +1,13 @@
+[tool.poetry]
+name = "practicumhw2"
+version = "0.1.0"
+description = ""
+authors = []
+
+[tool.poetry.dependencies]
+python = "^3.11"
+python-dotenv = "^1.2.2"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
@@ -47,8 +57,24 @@ authorized_licenses = [
     "mit-cmu",
     "3-clause bsd",
     "mpl-2.0",
+    # Compound SPDX expression reported by greenlet
+    "mit and psf-2.0",
+    # Bare "Artistic" (strip_license removes the trailing " License" suffix)
+    "artistic",
 ]
 unauthorized_licenses = [
     "gnu general public license",
     "gnu affero general public license",
+]
+
+[tool.liccheck.authorized_packages]
+# text-unidecode is dual-licensed Artistic OR GPL; it is a transitive
+# test-only dependency (pytest-playwright → python-slugify → text-unidecode).
+# The Artistic license is permissive; whitelisting by name avoids a false
+# GPL positive from the compound license declaration.
+text-unidecode = ">=0.0.0"
+
+[dependency-groups]
+dev = [
+    "pip-licenses (>=5.5.5,<6.0.0)"
 ]
